@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mattematikk timer</title>
+
+    <link rel="stylesheet" href="Sidestilark.css">
+
+    <style>
+        /* Generell kode for listene i ordered list*/
+        ol li {
+            color: rgb(0, 0, 0);
+        }
+
+        /* Her måtte jeg skrive ol> også for å kun style listene nederst på siden, hvis ikke ville jeg fått med de på toppen*/
+        ol>ul>li {
+            background-color: rgb(210, 152, 152);
+            width: 28%;
+            list-style-position: inside;
+        }
+
+        /* Kode for bare lister under ordered list, som blir overskriftene nederst på siden*/
+        ol>li {
+            background-color: rgb(168, 159, 159);
+            width: fit-content;
+            font-weight: bolder;
+            margin: 10px;
+        }
+
+    </style>
+
+</head>
+
+<body class="bakgrunn">
+    <div class="marg">
+        <h1 id="toppen">R1 Mattematikk <a class="hjemknapp" href="Timeplan_Odd.html">(Tilbake til Timeplanen)</a>
+        
+        <!--H1 fortsetter her slik at jeg kan putte bildet ved siden av, derfor vil toppen av bildet være på linje med h1-->
+        </h1> <img src="./mattebildet.jpg" alt="matte bildet">
+
+        <h3>To ting jeg liker med faget</h3>
+        <ul>
+            <li>Se sammenhenger med andre fag</li>
+            <li>Klare å bruke matten i praksis</li>
+        </ul>
+
+        <div style="margin-top: 50px;">
+            <h3>Praktisk info</h3>
+            <ul>
+                <li>Lærer: Mirjana</li>
+                <li>Klasserom: 216</li>
+                <li>Antall timer i uken: 3 * 75 min</li>
+            </ul>
+        </div>
+
+
+        <h2>Timeplanen:</h2>
+    </div>
+
+    <div style="margin-right: 600px;">
+        <table class="main_border">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Mandag</th>
+                    <th>Tirsdag</th>
+                    <th>Onsdag</th>
+                    <th>Torsdag</th>
+                    <th>Fredag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>08:30-09:45 Mattematikk</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>08:30-09:45 Mattematikk</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td></td>
+                    <td>10:30-11:45 Mattematikk</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="nedre_avsnitt">
+        <h2>Temaer skal ha i faget</h2>
+        <ol>
+            <li>Potenser</li>
+
+            <li>Logaritmer</li>
+            <ul>
+                <li>Briggske Logaritmer</li>
+                <li>Naturlige Logaritmer</li>
+            </ul>
+
+            <li>Vektorer</li>
+
+            <li>Derivasjon</li>
+            <ul>
+                <li>Derivarbarhet</li>
+            </ul>
+        </ol>
+        <a href="https://aunivers.lokus.no/fagpakker/realfag/matematikk-r1/velkommen">Mer...</a>
+    </div>
+
+<!--I href er det en id som kommer igjen i h1, dette er for at denne linken skal få leseren opp til toppen igjen. en til toppen knapp-->
+<a style="margin-left: 60px" href="#toppen">Til toppen</a>
+
+
+</body>
+
+</html>

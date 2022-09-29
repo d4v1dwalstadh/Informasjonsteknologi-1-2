@@ -1,0 +1,71 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+ul {
+    list-style-type: square;
+}
+
+li {
+    padding-bottom: 5px;
+}
+
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-bottom: 2px solid rgb(80, 78, 78);
+    width: fit-content;
+    margin-bottom: 50px;
+}
+
+.marg {
+    margin-left: 300px;
+    margin-top: 50px;
+}
+
+.bakgrunn {
+    background-color: #e5e5f7;
+    opacity: 0.9;
+    background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+}
+
+img {
+    width: 600px;
+    float: right;
+    margin-right: 150px;
+}
+
+table {
+    border-collapse: collapse;
+    border-bottom: 1.5px solid #0e441d;
+    
+}
+
+.main_border {
+    border: 2px solid rgb(6, 66, 6);
+    background-color: rgba(180, 193, 220, 0.7);
+    margin: auto;
+    width: 50%;
+    margin-bottom: 50px;
+}
+
+.hjemknapp {
+    text-decoration: none;
+    font-size: 25px;
+    color: #444cf7;
+}
+
+.hjemknapp:hover {
+    color: #262daa;
+}
+
+.nedre_avsnitt {
+    border: #0e441d solid 1.5px;
+    background-color: rgba(168, 162, 162, 0.4);
+    padding: 50px;
+    margin: 200px 300px 200px 300px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+
