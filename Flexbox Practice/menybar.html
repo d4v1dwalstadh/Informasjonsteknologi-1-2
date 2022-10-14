@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>øveoppgave flexboks</title>
+</head>
+
+<style>
+    body {
+        background-color: rgb(239, 255, 250);
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    #hoved {
+        width: 60%;
+        margin: 50px auto;
+        padding: 40px;
+        background-color: white;
+        border: 1px solid rgba(79, 79, 79, 0.3);
+    }
+
+    #meny {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    a {
+        background-color: #C5EBFA;
+        text-align: center;
+        width: 400px;
+        margin: 10px;
+        padding: 20px;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: rgb(114, 114, 209);
+        font-weight: bolder;
+        font-size: larger;
+    }
+
+    a:active {
+        text-decoration: underline;
+    }
+
+    #topptekst {
+        text-align: center;
+    }
+
+    img {
+        width: 230px;
+        filter: blur(7px);
+    }
+
+    img:hover {
+        filter: brightness(100%);
+    }
+
+   #link4:active{
+    transform: rotateY(360deg);
+    transition-duration: 1000ms;
+   }
+
+   #link5:hover {
+    transform: scale(2, 3);
+    transform: rotateX(3turn);
+    transition-duration: 3000ms;
+   }
+</style>
+
+<body>
+
+    <div id="hoved">
+        <div id="topptekst">
+            <h1> Klikk for å se </h1>
+        </div>
+        <div id="meny">
+            <a href="https://youtu.be/foJBnXwBMxI"> Bra video </a>
+            <a href="https://www.insider.com/guides/health/diet-nutrition/are-energy-drinks-bad-for-you"> Til Eirik </a>
+            <a href="https://www.bbc.com/news/newsbeat-61494094"> <img src="./dog.jpeg" alt="Cute dog"> </a>
+            <a id="link4" href="#"> Fin hund </a>
+            <a id="link5" href="#"> Kul hund </a>
+            <a href="olyringer.html">Olympiske ringer</a>
+            <a href="">hei</a>
+        </div>
+        <div id="innhold">
+            <p> Lorem ipsum dolor ... </p>
+        </div>
+    </div>
+
+    </div>
+
+</body>
+
+</html>
