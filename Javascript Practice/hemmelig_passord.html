@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemmelig Passsord</title>
+
+    <style>
+       #sentrering {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        transform: scale(1.5);
+       }
+
+       p {
+        text-align: center;
+        font-size: 10vh;
+        color: purple;
+       }
+
+    </style>
+
+</head>
+
+<body>
+    <div id="sentrering"> 
+    <input id="gjetting" type="string" placeholder="Gjett passord">
+
+    <button onclick="passordSjekker()">Test</button>
+    </div>
+    
+    <p id="svarSetning"></p>
+
+
+    <script>
+        function passordSjekker() {
+            var passord = "agario";
+            var gjettetPassord = document.getElementById("gjetting").value;
+            if (gjettetPassord == passord) {
+                document.getElementById("svarSetning").innerHTML = ("Du valgte riktig passord")
+            } 
+            else if (gjettetPassord == ""){
+
+            } 
+            else if (gjettetPassord == "?lengde"){
+                document.getElementById("svarSetning").innerHTML = (passord.length);
+            }
+            else if (gjettetPassord == "?1"){
+                document.getElementById("svarSetning").innerHTML = (passord[0]);
+            }
+            else if (gjettetPassord =="?2"){
+                document.getElementById("svarSetning").innerHTML = (passord[1]);
+            }
+            else if (gjettetPassord == "?siste"){
+                document.getElementById("svarSetning").innerHTML = (passord[5]);
+            }
+            else if (gjettetPassord == "?store"){
+                document.getElementById("svarSetning").innerHTML = (passord.toUpperCase());
+            }
+            else if (gjettetPassord == "?små"){
+                document.getElementById("svarSetning").innerHTML = (passord.toLowerCase());
+            }
+            else if (gjettetPassord != passord){
+                document.getElementById("svarSetning").innerHTML = ("passordet er feil")
+            }
+        
+            
+            
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Kalkulator</title>
+
+    <style>
+         body {
+            margin-top: 200px;
+            text-align: center;
+         }
+
+         p {
+            margin-top: 100px;
+            font-size: 200px;
+            color: blueviolet;
+         }
+    </style>
+
+</head>
+
+<body>
+    <h1>Kalkulator</h1>
+
+    <input id="forstetall" type="number">
+    <input id="andretall" type="number">
+    <button onclick="pluss()">+</button>
+    <button onclick="minus()">-</button>
+    <button onclick="dele()">/</button>
+    <button onclick="gange()">*</button>
+    <p id="svar"></p>
+
+
+    <script>
+        function pluss() {
+            var forstetall = document.getElementById("forstetall").value;
+            var andretall = document.getElementById("andretall").value;
+            var sum = Number(forstetall) + Number(andretall);
+            document.getElementById("svar").innerHTML = sum;
+        }
+
+        function minus() {
+            var forstetall = document.getElementById("forstetall").value;
+            var andretall = document.getElementById("andretall").value;
+            var sum = Number(forstetall) - Number(andretall);
+            document.getElementById("svar").innerHTML = sum;
+        }
+
+        function dele() {
+            var forstetall = document.getElementById("forstetall").value;
+            var andretall = document.getElementById("andretall").value;
+            var sum = Number(forstetall) / Number(andretall);
+            document.getElementById("svar").innerHTML = sum;
+        }
+
+        function gange() {
+            var forstetall = document.getElementById("forstetall").value;
+            var andretall = document.getElementById("andretall").value;
+            var sum = Number(forstetall) * Number(andretall);
+            document.getElementById("svar").innerHTML = sum;
+        }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

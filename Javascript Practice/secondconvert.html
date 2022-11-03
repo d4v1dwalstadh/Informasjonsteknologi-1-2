@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gjør om enhet</title>
+
+    <style>
+        button {
+            margin-top: 2vh;
+            margin: 5px;
+        }
+
+        body {
+            margin-top: 4vh;
+        }
+
+        input {
+            height: fit-content;
+            margin-top: 25px;
+            margin-right: 15px;
+            margin-left: 5px;
+        }
+
+        #oppsett {
+            display: flex;
+            justify-content: center;
+        }
+
+        p {
+            text-align: center;
+            font-size: 5vh;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <div id="oppsett">
+        <h2>Timer</h2>
+        <input id="forstetall" type="number">
+
+        <h2>Minutter</h2>
+        <input id="andretall" type="number">
+
+        <h2>Sekunder</h2>
+        <input id="tredjetall" type="number">
+    </div>
+
+    <div id="oppsett">
+        <br>
+        <button onclick="sekKonverter()">gjør om til sekunder</button>
+        <button onclick="minKonverter()">gjør om til minutter</button>
+        <button onclick="timeKonverter()">gjør om til timer</button>
+
+        <br>
+    </div>
+
+    <p id="svar"></p>
+
+
+    <script>
+        function sekKonverter() {
+            var forstetall = document.getElementById("forstetall").value;
+            forstetall = forstetall * 60 ** 2;
+            var andretall = document.getElementById("andretall").value;
+            andretall = andretall * 60;
+            var tredjetall = document.getElementById("tredjetall").value;
+            var resultat = Number(forstetall) + Number(andretall) + Number(tredjetall);
+            document.getElementById("svar").innerHTML = (resultat) + (" sek");
+        }
+
+        function minKonverter() {
+            var forstetall = document.getElementById("forstetall").value;
+            forstetall = forstetall * 60;
+            var andretall = document.getElementById("andretall").value;
+            var tredjetall = document.getElementById("tredjetall").value;
+            tredjetall = tredjetall / 60;
+            var resultat = Number(forstetall) + Number(andretall) + Number(tredjetall);
+            document.getElementById("svar").innerHTML = (resultat) + (" min");
+        }
+
+        function timeKonverter() {
+            var forstetall = document.getElementById("forstetall").value;
+            var andretall = document.getElementById("andretall").value;
+            andretall = andretall / 60;
+            var tredjetall = document.getElementById("tredjetall").value;
+            tredjetall = tredjetall / 60 ** 2;
+            var resultat = Number(forstetall) + Number(andretall) + Number(tredjetall);
+            document.getElementById("svar").innerHTML = (resultat) + (" timer");
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
