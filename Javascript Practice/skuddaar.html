@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Når er det skuddår</title>
+
+    <style>
+        #sentrering {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            transform: scale(1.5);
+        }
+
+        p {
+            text-align: center;
+            font-size: 10vh;
+            color: rgb(94, 75, 94);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="sentrering">
+        <input id="dittArstall" type="number" placeholder="skriv inn et årstall">
+        <button onclick="sjekkSkuddaar()">Sjekk Skuddår</button>
+
+    </div>
+    <p id="svar"></p>
+
+
+    <script>
+        function sjekkSkuddaar() {
+            var arstall = document.getElementById("dittArstall").value;
+
+            if (arstall / 4 == parseInt(arstall / 4)) {
+                document.getElementById("svar").innerHTML = "Dette er skuddår";
+            }
+            else {
+                document.getElementById("svar").innerHTML = "Ikke skuddår";
+            }
+        }
+    </script>
+</body>
+
+</html>

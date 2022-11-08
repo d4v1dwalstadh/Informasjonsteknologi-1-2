@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hvor gammel er du</title>
+
+    <style>
+        #sentrering {
+            display: flex;
+            justify-content: center;
+            margin-top: 8vh;
+            transform: scale(1.5);
+        }
+
+        p {
+            text-align: center;
+            font-size: 100px;
+        }
+
+        input {
+            border: white;
+            width: 50px;
+            height: 30px;
+            margin-top: 13px;
+            margin-left: 1px;
+        }
+
+        button {
+            margin-top: 15px;
+            height: 30px;
+            margin-right: 1px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="sentrering">
+        <button onclick="genererTall()">Generer en alder</button>
+        <h5> eller skriv inn </h3>
+            <input id="dinAlder" type="number" placeholder=" egen alder">
+            <button onclick="egenAlder()">test</button>
+
+    </div>
+
+    <p id="svar"></p>
+
+    <script>
+        function genererTall() {
+            var tilfeldigTall;
+            tilfeldigTall = (Math.random() * 100) + 1;
+            var tilfeldigTallHelt = parseInt(tilfeldigTall);
+
+            if (tilfeldigTall < 10) {
+                document.getElementById("svar").innerHTML = (tilfeldigTallHelt + " år,  du er ung")
+            }
+            else if (tilfeldigTall < 20) {
+                document.getElementById("svar").innerHTML = (tilfeldigTallHelt + " år, du er ungdom")
+            }
+            else if (tilfeldigTall < 67) {
+                document.getElementById("svar").innerHTML = (tilfeldigTallHelt + " år, du er voksen")
+            }
+            else if (tilfeldigTall == 67) {
+                document.getElementById("svar").innerHTML = (tilfeldigTallHelt + " år, du er pensjonist")
+            }
+            else if (tilfeldigTall < 75) {
+                document.getElementById("svar").innerHTML = tilfeldigTallHelt + (" år, du er eldre")
+            }
+            else {
+                document.getElementById("svar").innerHTML = (tilfeldigTallHelt + " år, du er gammel")
+            }
+        }
+
+        function egenAlder() {
+            var brukerAlder = document.getElementById("dinAlder").value;
+            if (brukerAlder == 0) {
+                document.getElementById("svar").innerHTML = (brukerAlder + " år, er du virkelig så gammel")
+            }
+            else if (brukerAlder < 10) {
+                document.getElementById("svar").innerHTML = (brukerAlder + " år,  du er ung")
+            }
+            else if (brukerAlder < 20) {
+                document.getElementById("svar").innerHTML = (brukerAlder + " år, du er ungdom")
+            }
+            else if (brukerAlder < 67) {
+                document.getElementById("svar").innerHTML = (brukerAlder + " år, du er voksen")
+            }
+            else if (brukerAlder == 67) {
+                document.getElementById("svar").innerHTML = (brukerAlder + " år, du er pensjonist")
+            }
+            else if (brukerAlder ==69) {
+                document.getElementById("svar").innerHTML = (brukerAlder + " år, haha veldig morsomt")
+            }
+            else if (brukerAlder < 75) {
+                document.getElementById("svar").innerHTML = (brukerAlder + " år, du er eldre")
+            }
+            else {
+                document.getElementById("svar").innerHTML = (brukerAlder + " år, du er gammel")
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
