@@ -1,0 +1,48 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: left/right 50px top/bottom 40px;
+    text-align: center;
+    background-color: #6d695c;
+    background-image:
+        repeating-linear-gradient(120deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .1) 1px, transparent 1px, transparent 60px),
+        repeating-linear-gradient(60deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .1) 1px, transparent 1px, transparent 60px),
+        linear-gradient(60deg, rgba(0, 0, 0, .1) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, .1) 75%, rgba(0, 0, 0, .1)),
+        linear-gradient(120deg, rgba(0, 0, 0, .1) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, .1) 75%, rgba(0, 0, 0, .1));
+    background-size: 70px 120px;
+}
+
+.main_border{
+    border: 2px solid rgb(39, 37, 37); 
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 70%;
+    margin: 25px auto;
+}
+
+h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: left/right 10px;
+    font-size: 30px;
+    border-bottom: 2px solid black;
+}
+
+h4{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: aqua;
+}
+
+
+h3{
+    margin: left/right 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: lighter;
+}
+
+.sitat {
+    margin: 20px auto;
+}
+
+img {
+    padding: 20px;
+}
+
