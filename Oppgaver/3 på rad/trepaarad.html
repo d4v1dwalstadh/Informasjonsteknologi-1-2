@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic tac toe</title>
+    <link rel="icon" type="image/x-icon" href="./icons8-tic-tac-toe-67.png">
+
+    <style>
+        .brettet {
+            display: grid;
+            place-content: center;
+            grid-template-columns: repeat(3, 10vw);
+            margin-top: -3vh;
+        }
+
+        .ruter {
+            border: 1px solid black;
+            text-align: center;
+            padding: 65px;
+        }
+
+        .spillere {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            margin-top: -3vh;
+        }
+
+        img {
+            transform: scale(0.35);
+        }
+
+        #sirkelSpiller,
+        #eksSpiller {
+            border-bottom: 8px solid turquoise;
+        }
+
+        #rute1,
+        #rute2,
+        #rute3 {
+            border-top: none;
+        }
+
+        #rute1,
+        #rute4,
+        #rute7 {
+            border-left: none;
+        }
+
+        #rute7,
+        #rute8,
+        #rute9 {
+            border-bottom: none;
+        }
+
+        #rute3,
+        #rute6,
+        #rute9 {
+            border-right: none;
+        }
+
+        #vinnerVarsel {
+            position: absolute;
+            left: 100px;
+            top: 250px;
+            font-size: 6vh;
+            text-align: center;
+        }
+
+        #spillIgjen {
+            border: 1px solid black;
+            background-color: rgb(99, 154, 99);
+            padding: 3px;
+            font-weight: 600;
+        }
+
+        #spillIgjen:hover {
+            background-color: rgba(99, 154, 99, 0.9);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="spillere">
+        <div><img id="eksSpiller" src="./eks.png" alt="spiller x"></div>
+        <div><img id="sirkelSpiller" src="./sirkel.png" alt="spiller x"></div>
+    </div>
+
+
+    <p id="vinnerVarsel"><span id="hvemVinner"></span><br> <span onclick="restart()" id="spillIgjen">Spill igjen</span>
+    </p>
+
+
+    <section class="brettet">
+        <div id="rute1" class="ruter rad1" onclick="valgtRute(1, 1)"></div>
+        <div id="rute2" class="ruter rad1" onclick="valgtRute(1, 2)"></div>
+        <div id="rute3" class="ruter rad1" onclick="valgtRute(1, 3)"></div>
+        <div id="rute4" class="ruter rad2" onclick="valgtRute(2, 1)"></div>
+        <div id="rute5" class="ruter rad2" onclick="valgtRute(2, 2)"></div>
+        <div id="rute6" class="ruter rad2" onclick="valgtRute(2, 3)"></div>
+        <div id="rute7" class="ruter rad3" onclick="valgtRute(3, 1)"></div>
+        <div id="rute8" class="ruter rad3" onclick="valgtRute(3, 2)"></div>
+        <div id="rute9" class="ruter rad3" onclick="valgtRute(3, 3)"></div>
+    </section>
+
+
+    <script>
+        let seksjonArray = [ //samme system som yatzy
+            document.getElementsByClassName("rad1"), //0
+            document.getElementsByClassName("rad2"), //1 
+            document.getElementsByClassName("rad3"), //2
+        ]
+
+        let rutene = [ //definerer rutene fra 0 - 8
+            seksjonArray[0][0],
+            seksjonArray[0][1],
+            seksjonArray[0][2],
+            seksjonArray[1][0],
+            seksjonArray[1][1],
+            seksjonArray[1][2],
+            seksjonArray[2][0],
+            seksjonArray[2][1],
+            seksjonArray[2][2]
+        ]
+
+        let muligeVinnerMåter = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+        ]
+
+        let vinnerVarsel = document.getElementById("vinnerVarsel");
+
+        let ruter = document.getElementsByClassName("ruter");
+
+        let eksSpiller = document.getElementById("eksSpiller");
+        let sirkelSpiller = document.getElementById("sirkelSpiller");
+
+        vinnerVarsel.style.visibility = "hidden"
+        sirkelSpiller.style.borderBottom = "none"
+        let vinnerSjekker = 0
+        let kjorFunk = true
+        let antallEkser = 0
+
+        function valgtRute(radNum, kolonneNum) {
+            if (kjorFunk == true) {
+                if (sirkelSpiller.style.borderBottom == "none" && seksjonArray[radNum - 1][kolonneNum - 1].style.backgroundImage == "") { //hvis det er eks sin tur og den ikke har tre brikker plassert
+                    seksjonArray[radNum - 1][kolonneNum - 1].style.backgroundImage = "url('./eks.png')" //print bildet inni trykkkede ruten
+                    seksjonArray[radNum - 1][kolonneNum - 1].style.backgroundSize = "contain"
+
+                    eksSpiller.style.borderBottom = "none" //gir turen videre til sirkler
+                    sirkelSpiller.style.borderBottom = "8px solid turquoise"
+                    sirkelSpiller.style.transition = "all 0.2s ease 0s"
+
+                    seksjonArray[radNum - 1][kolonneNum - 1].innerHTML = 1
+                    seksjonArray[radNum - 1][kolonneNum - 1].style.color = "black"
+
+                    antallEkser++
+
+                    if (antallEkser == 5) {
+                        vinnerVarsel.style.visibility = "visible"
+                        document.getElementById("hvemVinner").innerHTML = "Uavgjort!"
+                        vinnerVarsel.style.transition = "all 0.5s ease 0.2s"
+                        for (let alle in rutene) {
+                            rutene[alle].style.filter = "blur(5px)"
+                        }
+                        kjorFunk = false
+                    }
+                }
+
+                else if (eksSpiller.style.borderBottom == "none"  && seksjonArray[radNum - 1][kolonneNum - 1].style.backgroundImage == "") {
+                    seksjonArray[radNum - 1][kolonneNum - 1].style.backgroundImage = "url('./sirkel.png')"
+                    seksjonArray[radNum - 1][kolonneNum - 1].style.backgroundSize = "contain"
+
+                    sirkelSpiller.style.borderBottom = "none"
+                    eksSpiller.style.borderBottom = "8px solid turquoise"
+                    eksSpiller.style.transition = "all 0.2s ease 0s"
+
+                    seksjonArray[radNum - 1][kolonneNum - 1].innerHTML = -1
+                    seksjonArray[radNum - 1][kolonneNum - 1].style.color = "white"
+
+                }
+
+
+                for (let i = 0; i < muligeVinnerMåter.length; i++) {
+                    vinnerSjekker = 0
+                    for (let j = 0; j < 3; j++) {
+                        vinnerSjekker += Number(rutene[muligeVinnerMåter[i][j]].innerHTML)
+                    }
+                    if (vinnerSjekker == 3) {
+                        for (let alle in rutene) {
+                            rutene[alle].style.filter = "blur(5px)"
+                        }
+                        kjorFunk = false
+                        vinnerVarsel.style.visibility = "visible"
+                        document.getElementById("hvemVinner").innerHTML = "Ekser Vinner!"
+                        vinnerVarsel.style.transition = "all 0.5s ease 0.2s"
+
+                    }
+                    else if (vinnerSjekker == -3) {
+                        for (let alle in rutene) {
+                            rutene[alle].style.filter = "blur(5px)"
+                        }
+                        kjorFunk = false
+                        vinnerVarsel.style.visibility = "visible"
+                        document.getElementById("hvemVinner").innerHTML = "Sirkler Vinner!"
+                        vinnerVarsel.style.transition = "all 0.5s ease 0.2s"
+                    }
+                }
+
+            }
+        }
+
+        function restart() {
+            location.reload()
+        }
+    </script>
+</body>
+
+</html>
