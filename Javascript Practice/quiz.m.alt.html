@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizz</title>
+    <link rel="icon" type="image/x-icon" href="./quiestionMark.png">
+    
+</head>
+<body>
+
+    <h1>Quiz med alternativer</h1>
+
+    <h4>Hva heter statsministeren i Norge?</h4>
+    <input id="alt1Spm1" type="radio" name="spm1">
+    <label for="alt1Spm1">Erna Solberg</label>
+    <input id="alt2Spm1" type="radio" name="spm1">
+    <label for="alt2Spm1">Jonas Gahr Støre</label>
+    <input id="alt3Spm1" type="radio" name="spm1">
+    <label for="alt3Spm1">Jens Stoltenberg</label>
+    <input id="alt4Spm1" type="radio" name="spm1">
+    <label for="alt4Spm1">Siv Jensen</label>
+
+    <h4>Hva er det høyeste fjellet i verden?</h4>
+    <input id="alt1Spm2" type="radio" name="spm2">
+    <label for="alt1Spm2">Mount Everest</label>
+    <input id="alt2Spm2" type="radio" name="spm2">
+    <label for="alt2Spm2">Kilamanjaro</label>
+    <input id="alt3Spm2" type="radio" name="spm2">
+    <label for="alt3Spm2">Mont Blanc</label>
+    <input id="alt4Spm2" type="radio" name="spm2">
+    <label for="alt4Spm2">Galdhøpiggen</label>
+
+    <h4>Hva er den største innsjøen i Norge?</h4>
+    <input id="alt1Spm3" type="radio" name="spm3">
+    <label for="alt1Spm3">Glomma</label>
+    <input id="alt2Spm3" type="radio" name="spm3">
+    <label for="alt2Spm3">Oslofjorden</label>
+    <input id="alt3Spm3" type="radio" name="spm3">
+    <label for="alt3Spm3">Semsvannet</label>
+    <input id="alt4Spm3" type="radio" name="spm3">
+    <label for="alt4Spm3">Mjøsa</label>
+
+    <br>
+    <button style="margin-top: 5vh;" id="btnSjekkSvar">Sjekk svar</button>
+
+    <script>
+        let btnSjekkSvar = document.getElementById("btnSjekkSvar");
+
+        let svarSetning = document.getElementById("svarSetning");
+
+        let riktigSvarSpm1 = document.getElementById("alt2Spm1");
+        let riktigSvarSpm2 = document.getElementById("alt1Spm2");
+        let riktigSvarSpm3 = document.getElementById("alt4Spm3");
+
+        let alleRiktigeSvar = [riktigSvarSpm1, riktigSvarSpm2, riktigSvarSpm3]
+
+        let alleRadioInp = document.getElementsByTagName("input");
+
+        let antallRikige = 0;
+        function sjekkSvar() {
+            for (let alt in alleRadioInp) {
+                if (alleRadioInp[alt].checked == true) {
+                    alleRadioInp[alt].style.accentColor = "red"
+                }
+            }
+            for (let alle in alleRiktigeSvar) {
+                if (alleRiktigeSvar[alle].checked == true) {
+                    antallRikige++
+                    alleRiktigeSvar[alle].style.accentColor = "green"
+                }
+            }
+        }
+
+        btnSjekkSvar.addEventListener("click", sjekkSvar);
+
+
+    </script>
+</body>
+
+</html>
