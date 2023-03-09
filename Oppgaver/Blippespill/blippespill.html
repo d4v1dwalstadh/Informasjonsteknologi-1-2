@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blippespill</title>
+    <link rel="icon" type="image/x-icon" href="./eric.cartman.png">
+
+    <style>
+        #spillFelt>div {
+            position: absolute;
+            background-image: blue;
+            background-image: url(./eric.cartman.png);
+            border-radius: 45%;
+            width: 48px;
+            height: 48px;
+        }
+
+        p {
+            position: absolute;
+            left: 1350px;
+            font-size: 30px;
+        }
+
+        #stoppeKlokke {
+            position: absolute;
+            top: 550px;
+            left: 30px;
+        }
+
+        #timer {
+            position: absolute;
+            top: -550px;
+            left: 5px;
+        }
+
+        #velgMode {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 300px;
+            gap: 10px;
+        }
+
+        #resetKnapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 300px;
+            gap: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <section id="velgMode">
+        <button id="creativeBtn">Creative</button>
+        <button id="challengeBtn">Challenge</button>
+    </section>
+
+    <section class="creative">
+        <input type="color" name="" id="dinFarge">
+        <form id="frmDinFil">
+            <input type="file" id="dinBilde" name="filename">
+            <input type="submit" id="submitBtn">
+        </form>
+
+
+
+        <button id="resetCreative">Reset</button>
+    </section>
+
+    <section id="spillFelt"></section>
+
+    <section class="challenge">
+        <p id="tellerenP">0</p>
+
+        <main id="stoppeKlokke">
+            <p id="timer"><span id="seconds">00</span>:<span id="tens">00</span></p>
+            <button id="button-start">Start</button>
+            <button id="button-stop">Stop</button>
+            <button id="button-reset">Reset</button>
+        </main>
+    </section>
+
+
+
+    <script>
+        let dinFarge = document.querySelector("#dinFarge");
+        let stoppeKlokke = document.querySelector("#stoppeKlokke");
+        let ny = false;
+        let lydeffekt = new Audio('Damnit.cartman.mp3');
+        let tellerenP = document.querySelector("#tellerenP");
+        let teller = 0;
+        var buttonStart = document.getElementById('button-start');
+        let creative = document.querySelector(".creative");
+        let challenge = document.querySelector(".challenge");
+        let velgMode = document.getElementById("velgMode");
+        let creativeBtn = document.getElementById("creativeBtn");
+        let challengeBtn = document.getElementById("challengeBtn");
+        let resetCreative = document.getElementById("resetCreative");
+        let dinBildeInp = document.getElementById("dinBilde");
+        let frmDinFil = document.getElementById("frmDinFil");
+        let submitBtn = document.getElementById("submitBtn")
+
+
+
+
+        let kjorCreative = false;
+
+
+/*
+        function godtaFil(evt) {
+            evt.preventDefault();
+
+            filNavn = (dinBildeInp.value).substring[12, 25]
+            alert(filNavn)
+
+        }
+        frmDinFil.addEventListener("submit", godtaFil)
+*/
+
+
+
+
+        //stoppeklokken
+        var seconds = 00;
+        var tens = 00;
+        var appendTens = document.getElementById("tens")
+        var appendSeconds = document.getElementById("seconds")
+        var buttonStop = document.getElementById('button-stop');
+        var buttonReset = document.getElementById('button-reset');
+        var Interval;
+
+
+        creative.style.display = "none"
+        challenge.style.display = "none"
+
+
+        submitBtn.onclick = function (evt) {
+            evt.stopPropagation()
+        }
+
+        dinBildeInp.onclick = function (evt) {
+            evt.stopPropagation()
+        }
+
+        dinFarge.onclick = function (evt) {
+            evt.stopPropagation()
+        }
+
+        creativeBtn.onclick = function (evt) {
+            evt.stopPropagation()
+        }
+
+
+        creativeBtn.onclick = function (evt) {
+            creative.style.display = "block"
+            velgMode.style.display = "none"
+            kjorCreative = true
+            //remove child som lages der med en gang
+        }
+
+        window.onclick = function (evt) {
+            if (kjorCreative == true) {
+                var divEl = document.createElement("div")
+                ny = true
+                divEl.style.top = evt.clientY - 25 + "px"
+                divEl.style.left = evt.clientX - 25 + "px"
+                divEl.style.backgroundImage = dinBildeInp.value
+                //  divEl.style.backgroundColor = dinFarge.value
+
+                divEl.onmouseenter = fjern
+                document.getElementById("spillFelt").appendChild(divEl)
+            }
+        }
+
+        resetCreative.onclick = function () {
+            location.reload()
+        }
+
+        //stoppeklokken
+        stoppeKlokke.onclick = function (evt) {
+            evt.stopPropagation()
+        }
+
+        buttonStop.style.display = "none"
+        buttonStart.style.display = "none"
+        buttonReset.style.display = "none"
+
+        buttonStart.onclick = function () {
+            clearInterval(Interval);
+            Interval = setInterval(startTimer, 10);
+        }
+
+        buttonReset.onclick = function () {
+            clearInterval(Interval);
+            tens = "00";
+            seconds = "00";
+            appendTens.innerHTML = tens;
+            appendSeconds.innerHTML = seconds;
+        }
+
+        buttonStop.onclick = function () {
+            clearInterval(Interval);
+        }
+
+        function startTimer() {
+            tens++;
+            if (tens <= 9) {
+                appendTens.innerHTML = "0" + tens;
+            }
+            if (tens > 9) {
+                appendTens.innerHTML = tens;
+            }
+            if (tens > 99) {
+                console.log("seconds");
+                seconds++;
+                appendSeconds.innerHTML = "0" + seconds;
+                tens = 0;
+                appendTens.innerHTML = "0" + 0;
+            }
+            if (seconds > 9) {
+                appendSeconds.innerHTML = seconds;
+            }
+        }
+        //slutt timer
+
+
+
+        function startSpill(evt) {
+            velgMode.style.display = "none"
+            challenge.style.display = "block"
+
+            buttonStart.click()
+
+            for (let i = 0; i < 10; i++) {
+                var divEl = document.createElement("div")
+                ny = true
+
+                let randomY = Math.floor(Math.random() * 780)
+                let randomX = Math.floor(Math.random() * 1390)
+                divEl.style.top = randomY + "px"
+                divEl.style.left = randomX + "px"
+                divEl.style.backgroundColor = dinFarge.value
+                divEl.onmouseenter = fjern
+                document.getElementById("spillFelt").appendChild(divEl)
+            }
+        }
+        challengeBtn.addEventListener("click", startSpill);
+
+
+        var fjern = function (evt) {
+            evt.stopPropagation()
+            if (kjorCreative == true) {
+                teller = 0
+            }
+            if (!ny) {
+                var minAnim = evt.target.animate([{ transform: "scale(1)" }, { transform: "scale(2)" }], 100)
+                lydeffekt.play()
+                teller++
+                tellerenP.innerHTML = teller
+                minAnim.onfinish = function () {
+                    document.getElementById("spillFelt").removeChild(evt.target)
+                }
+            }
+            if (teller == 10) {
+                buttonStop.click()
+
+                let resetDivEl = document.createElement("div")
+                resetDivEl.setAttribute("id", "resetKnapper")
+                document.body.appendChild(resetDivEl)
+
+                let resetChallengeBtn = document.createElement("button")
+                resetChallengeBtn.innerHTML = "Velg modus"
+
+                let startPaaNyttBtn = document.createElement("button")
+                startPaaNyttBtn.innerHTML = "Start på nytt"
+
+                document.getElementById("resetKnapper").appendChild(resetChallengeBtn)
+                document.getElementById("resetKnapper").appendChild(startPaaNyttBtn)
+
+                tellerenP.style.top = "0px"
+
+                resetChallengeBtn.onclick = function () {
+                    location.reload()
+                }
+
+
+                startPaaNyttBtn.onclick = function () {
+                    buttonReset.click()
+                    startSpill()
+                    buttonStart.click()
+                    teller = 0
+                    tellerenP.innerHTML = teller
+                    document.body.removeChild(resetDivEl)
+
+                }
+            }
+
+            ny = false
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
