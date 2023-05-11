@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krypteringsoppgave</title>
+
+    <style>
+        #oppsett {
+            display: grid;
+            place-content: center;
+            gap: 10px;
+            width: 60vw;
+            margin-top: 3rem;
+        }
+
+        #valg {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div style="display: grid; place-content: center">
+        <h1 style="text-align: center;">Krypteringsmasking</h1>
+        <div id="oppsett">
+            <div id="valg">
+                <div>
+                    <input type="radio" id="krypter" name="valg">
+                    <label for="krypter">Kryper</label>
+                </div>
+
+                <div>
+                    <label for="dekrypter">Dekrypter</label>
+                    <input type="radio" id="dekrypter" name="valg">
+                </div>
+            </div>
+
+            <label for="brukerOrd">Ord/setning som skal krypteres</label>
+            <input type="text" id="brukerOrd">
+
+            <label for="antallForskyvning">Velg forskyvning mellom 1 og 10</label>
+            <div style="margin-left: 2.5rem;">
+                <input type="range" min="1" max="10" id="antallForskyvning" value="5"
+                    oninput="this.nextElementSibling.value = this.value">
+                <output>5</output>
+            </div>
+            <button id="okBtn">Kjør</button>
+
+            <p id="svar"></p>
+        </div>
+    </div>
+
+    <script>
+        let ord = document.querySelector("#brukerOrd");
+        let antallForskyvning = document.querySelector("#antallForskyvning");
+        let svar = document.querySelector("#svar");
+        let okBtn = document.querySelector("#okBtn");
+        let krypterRadio = document.querySelector("#krypter");
+        let dekrypterRadio = document.querySelector("#dekrypter")
+
+
+        function krypter() {
+            svar.innerHTML = ""
+            let asciiBokstavVerdier = [];
+            let kryptertOrd = "";
+            let dekryptertOrd = "";
+
+            if (krypterRadio.checked == true) {
+                for (let alle in ord.value) {
+                    asciiBokstavVerdier[alle] = ((ord.value).charCodeAt(alle)) + Number(antallForskyvning.value)
+                    kryptertOrd += String.fromCharCode(asciiBokstavVerdier[alle])
+                }
+                svar.innerHTML = kryptertOrd;
+            }
+            if (dekrypterRadio.checked == true) {
+                for (let alle in ord.value) {
+                    asciiBokstavVerdier[alle] = ((ord.value).charCodeAt(alle)) - Number(antallForskyvning.value)
+                    dekryptertOrd += String.fromCharCode(asciiBokstavVerdier[alle])
+                }
+                svar.innerHTML = dekryptertOrd
+            }
+
+        }
+        okBtn.addEventListener("click", krypter)
+
+
+        //En funksjon som viser aktivt verdien til range elementet.
+        function updateTextInput(val) {
+            document.getElementById('antallForskyvning').value = val;
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
