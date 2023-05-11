@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+input,
+button {
+    width: fit-content;
+}
+
+#inputtene {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#infoen {
+    display: flex;
+    gap: 1vw;
+}
+
+#russekortet {
+    position: absolute;
+    left: 40vw;
+    top: 35vh;
+    border: 1px black solid;
+    width: 45vw;
+    height: 42vh;
+    background: hsla(0, 51%, 92%, 1);
+    background: radial-gradient(circle, hsla(0, 51%, 92%, 1) 0%, hsla(0, 85%, 56%, 1) 29%);
+    background: -moz-radial-gradient(circle, hsla(0, 51%, 92%, 1) 0%, hsla(0, 85%, 56%, 1) 29%);
+    background: -webkit-radial-gradient(circle, hsla(0, 51%, 92%, 1) 0%, hsla(0, 85%, 56%, 1) 29%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#F5E0E0", endColorstr="#EE3232", GradientType=1);
+}
+
+#russekortetBlaa {
+    position: absolute;
+    left: 40vw;
+    top: 35vh;
+    border: 1px black solid;
+    width: 45vw;
+    height: 42vh;
+    background: hsla(0, 0%, 97%, 1);
+    background: radial-gradient(circle, hsla(0, 0%, 97%, 1) 0%, hsla(217, 63%, 43%, 1) 29%);
+    background: -moz-radial-gradient(circle, hsla(0, 0%, 97%, 1) 0%, hsla(217, 63%, 43%, 1) 29%);
+    background: -webkit-radial-gradient(circle, hsla(0, 0%, 97%, 1) 0%, hsla(217, 63%, 43%, 1) 29%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#F8F8F8", endColorstr="#285EB3", GradientType=1);
+}
+
+#russekortToppLinjen {
+    display: flex;
+    justify-content: center;
+}
+
+#russekortTittel {
+    margin-left: 47%;
+    width: 45%;
+    margin-bottom: 3%;
+}
+
+#russekortNavn {
+    margin-top: -25px;
+    margin-left: 65%;
+}
+
+#russekortAdresse,
+#russekortTlf {
+    margin-left: 67%;
+    margin-top: -10px;
+}
+
+#russekortQuote {
+    width: 40%;
+    margin-left: 55%;
+}
+
+#russekortBilde {
+    position: absolute;
+    width: 10vw;
+    height: 190px;
+    left: 13.5%;
+    top: 12vh;
+    transform: rotate(-20deg);
+    border: solid black 4px;
+    z-index: 2;
+    object-fit: fill;
+}
+
+#bildeOpplastImg {
+    position: absolute;
+    top: 65%;
+    left: 24%;
+    width: 4vw;
+    z-index: 3;
+}
+
+#bildeOpplastImg:hover {
+    background-color: rgba(214, 214, 255, 0.2);
+}
+
+#sortBakgrunn {
+    background-color: black;
+    width: 150px;
+    height: 190px;
+    position: absolute;
+    left: 107px;
+    top: 112px;
+    transform: rotate(-20deg);
+    z-index: 1;
+}
+
+#minListe {
+    padding: 0.2rem;
+}
+
